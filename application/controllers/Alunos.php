@@ -27,6 +27,30 @@ class Alunos extends CI_Controller {
         redirect('alunos');
     }
     
+    function excluir($id) {
+        $this->alunos->deletar($id);
+        redirect('alunos');
+    }
+    
+    public function editar($id) {
+        $data['alunosEditar'] = $this->alunos->editar($id);
+        $this->load->view('template/header');
+        $this->load->view('alunosEditar', $data);
+        $this->load->view('template/footer');
+    }
+    
+    public function atualizar() {
+        $dados['id'] = $this->input->post('id');
+        $dados['nome'] = mb_convert_case($this->input->post('nome'), MB_CASE_UPPER);
+        $dados['rg'] = $this->input->post('rg');
+        $dados['endereco'] = mb_convert_case($this->input->post('endereco'), MB_CASE_UPPER);
+        $dados['turma'] = mb_convert_case($this->input->post('turma'), MB_CASE_UPPER);
+        $dados['idade'] = $this->input->post('idade');
+        
+        $this->alunos->atualizar($dados);
+        redirect('alunos');
+    }
+    
 } 
 /* 
  * To change this license header, choose License Headers in Project Properties.
