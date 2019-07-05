@@ -20,9 +20,10 @@ class Alunos extends CI_Controller {
         //nome do campo do vetor ser o mesmo campo da tabela no BD
         $dados['nome'] = mb_convert_case($this->input->post('nome'), MB_CASE_UPPER);
         $dados['rg'] = $this->input->post('rg');
-        $dados['endereco'] = mb_conbert_case($this->input->poost('endereco'), MB_CASE_UPPER);
-        $dados['turma'] = mb_conbert_case($this->input->poost('turma'), MB_CASE_UPPER);
+        $dados['endereco'] = mb_convert_case($this->input->post('endereco'), MB_CASE_UPPER);
+        $dados['turma'] = mb_convert_case($this->input->post('turma'), MB_CASE_UPPER);
         $dados['idade'] = $this->input->post('idade');
+        $dados['sexo'] = mb_convert_case($this->input->post('sexo'), MB_CASE_UPPER);
         $this->alunos->inserir($dados);
         redirect('alunos');
     }
@@ -46,6 +47,7 @@ class Alunos extends CI_Controller {
         $dados['endereco'] = mb_convert_case($this->input->post('endereco'), MB_CASE_UPPER);
         $dados['turma'] = mb_convert_case($this->input->post('turma'), MB_CASE_UPPER);
         $dados['idade'] = $this->input->post('idade');
+        $dados['sexo'] = mb_convert_case($this->input->post('sexo'), MB_CASE_UPPER);
         
         $this->alunos->atualizar($dados);
         redirect('alunos');
