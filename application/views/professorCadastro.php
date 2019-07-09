@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col-lg-3 col-md-3 col-3"></div>
     <div class="col-lg-6 col-md-6 col-6">
-        <h1 class="jumbotron-heading">Cadastro de Aluno</h1><p></p>
-        <?php echo form_open('alunos/inserir'); ?>
+        <h1 class="jumbotron-heading">Cadastro de Professor</h1><p></p>
+        <?php echo form_open('professor/inserir'); ?>
         <form method="post" style="text-align:center" class="form-group">
             <div class="form-group">
 
@@ -14,19 +14,6 @@
 
                 <input type="text" class="form-control form-control-lg" name="turma" placeholder="Turma"/><p></p>
 
-                <input type="text" class="form-control form-control-lg" name="idade" placeholder="Idade"/><p></p>
-
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="sexo" id="inlineRadio1" value="Masculino">
-                    <label class="form-check-label" for="inlineRadio1">Masculino</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="sexo" id="inlineRadio2" value="Feminino">
-                    <label class="form-check-label" for="inlineRadio2">Feminino</label>
-                </div>
-                <p></p>
-
-
                 <input type="submit" name="acao" value="Salvar" class="btn btn-success"/>
 
                 <input type="reset" class="btn btn-danger"/>
@@ -37,20 +24,18 @@
                  
                 <p></p>
 
-                <table id="table_id" class="table  table-bordered table-striped" style="width: 100%">
+                <table class="table  table-bordered table-hover">
                     <thead>
                         <tr>
                             <th>Nome</th>
                             <th>RG</th>
                             <th>Endereço</th>
                             <th>Turma</th>
-                            <th>idade</th>
-                            <th>Sexo</th>
                             <th>Funções</th>
                         </tr>
                     </thead>
                     <tbody>
-                           <?php foreach ($alunos as $row):
+                           <?php foreach ($professor as $row):
                           ?>
                         <tr>
                          
@@ -59,8 +44,6 @@
                             <td><?php echo $row->rg; ?></td>
                              <td><?php echo $row->endereco; ?></td>
                             <td><?php echo $row->turma; ?></td>
-                            <td><?php echo $row->idade; ?></td>
-                            <td><?php echo $row->sexo; ?></td>
 
                         </tr>
                         <?php endforeach;    ?>
@@ -78,9 +61,3 @@
     </div>
     <div class="col-lg-3 col-md-3 col-3"></div>
 </div>
-<script>
-    $(document).ready(function () {
-        $('#table_id').DataTable({
-        });
-    });
-</script>

@@ -2,17 +2,17 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Alunos extends CI_Controller {
+class Professor extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->load->model('Alunos_model', 'alunos'); // 'alunos' é um alias para 'Alunos_model'
+        $this->load->model('Professor_model', 'professor'); // 'professor' é um alias para 'Alunos_model'
     }
 
     public function index() {
         $this->load->view('template/header');
-        $lista['alunos'] = $this->alunos->listar();
-        $this->load->view('alunosCadastro', $lista);
+        $lista['professor'] = $this->professor->listar();
+        $this->load->view('professorCadastro', $lista);
         $this->load->view('template/footer');
     }
 
@@ -22,21 +22,19 @@ class Alunos extends CI_Controller {
         $dados['rg'] = $this->input->post('rg');
         $dados['endereco'] = mb_convert_case($this->input->post('endereco'), MB_CASE_UPPER);
         $dados['turma'] = mb_convert_case($this->input->post('turma'), MB_CASE_UPPER);
-        $dados['idade'] = $this->input->post('idade');
-        $dados['sexo'] = mb_convert_case($this->input->post('sexo'), MB_CASE_UPPER);
-        $this->alunos->inserir($dados);
-        redirect('alunos');
+        $this->professor->inserir($dados);
+        redirect('professor');
     }
 
     public function excluir($id) {
-        $this->alunos->deletar($id);
-        redirect('alunos');
+        $this->professor->deletar($id);
+        redirect('professor');
     }
 
     public function editar($id) {
-        $data['alunosEditar'] = $this->alunos->editar($id);
+        $data['professorEditar'] = $this->professor->editar($id);
         $this->load->view('template/header');
-        $this->load->view('alunosEditar', $data);
+        $this->load->view('professorEditar', $data);
         $this->load->view('template/footer');
     }
 
@@ -46,17 +44,9 @@ class Alunos extends CI_Controller {
         $dados['rg'] = $this->input->post('rg');
         $dados['endereco'] = mb_convert_case($this->input->post('endereco'), MB_CASE_UPPER);
         $dados['turma'] = mb_convert_case($this->input->post('turma'), MB_CASE_UPPER);
-        $dados['idade'] = $this->input->post('idade');
-        $dados['sexo'] = mb_convert_case($this->input->post('sexo'), MB_CASE_UPPER);
         
         $this->pais->atualizar($dados);
         redirect('pais');
     }
 
 }
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-

@@ -17,6 +17,11 @@ and open the template in the editor.
         <link href="<?php echo base_url('assets/js/bootstrap.min.js')?>" rel="stylesheet">
         <link href="<?php echo base_url('assets/js/jquery.min.js')?>" rel="stylesheet">
         
+        <link rel="stylesheet" type="text/css"
+              href="<?php echo base_url('DataTables/datatables.min.css')?>"/>
+        
+        <script src="<?php echo base_url('DataTables/jquery.min.js')?>"></script>
+        
     </head>
     <body>
         <div class="container">
