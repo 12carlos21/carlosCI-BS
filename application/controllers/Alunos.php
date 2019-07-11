@@ -49,8 +49,8 @@ class Alunos extends CI_Controller {
         $dados['idade'] = $this->input->post('idade');
         $dados['sexo'] = mb_convert_case($this->input->post('sexo'), MB_CASE_UPPER);
         
-        $this->pais->atualizar($dados);
-        redirect('pais');
+        $this->alunos->atualizar($dados);
+        redirect('alunos');
     }
 
 }

@@ -52,12 +52,12 @@
                     <th>Turma</th>
                     <th>idade</th>
                     <th>Sexo</th>
-                    <th>Funções</th>
+                    <th>Funçoes</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($alunos as $row):
-                    ?>
+                    ?>           
                     <tr>
                         <td><?php echo $row->nome; ?></td>
                         <td><?php echo $row->rg; ?></td>
@@ -65,7 +65,11 @@
                         <td><?php echo $row->turma; ?></td>
                         <td><?php echo $row->idade; ?></td>
                         <td><?php echo $row->sexo; ?></td>
-                        <td>Editar</td>
+                        <td>
+                            <a href="<?php echo base_url() . 'alunos/excluir/' . $row->id; ?>">Excluir</a>
+                            | 
+                            <a href="<?php echo base_url() . 'alunos/editar/' . $row->id; ?>">Editar</a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
