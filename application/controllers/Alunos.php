@@ -24,13 +24,27 @@ class Alunos extends CI_Controller {
         $dados['turma'] = mb_convert_case($this->input->post('turma'), MB_CASE_UPPER);
         $dados['idade'] = $this->input->post('idade');
         $dados['sexo'] = mb_convert_case($this->input->post('sexo'), MB_CASE_UPPER);
-        $this->alunos->inserir($dados);
-        redirect('alunos');
+        
+        $result=$this->alunos->inserir($dados);
+        
+        if($result==true){
+            $this->session->set_flashdata('true', 'msg');
+            redirect('alunos');
+        }else {
+            $this->session->set_flashdata('err', 'msg');
+            redirect('alunos');
+        }
     }
 
     public function excluir($id) {
-        $this->alunos->deletar($id);
-        redirect('alunos');
+       $result=$this->alunos->deletar($dados);      
+        if($result==true){
+            $this->session->set_flashdata('excluirSucesso', 'msg');
+            redirect('alunos');
+        }else {
+            $this->session->set_flashdata('err', 'msg');
+            redirect('alunos');
+        }
     }
 
     public function editar($id) {
@@ -49,14 +63,14 @@ class Alunos extends CI_Controller {
         $dados['idade'] = $this->input->post('idade');
         $dados['sexo'] = mb_convert_case($this->input->post('sexo'), MB_CASE_UPPER);
         
-        $this->alunos->atualizar($dados);
-        redirect('alunos');
+        $result=$this->alunos->atualizar($dados);      
+        if($result==true){
+            $this->session->set_flashdata('trueUpdate', 'msg');
+            redirect('alunos');
+        }else {
+            $this->session->set_flashdata('err', 'msg');
+            redirect('alunos');
+        }
     }
 
 }
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-

@@ -45,8 +45,8 @@ class Professor extends CI_Controller {
         $dados['endereco'] = mb_convert_case($this->input->post('endereco'), MB_CASE_UPPER);
         $dados['turma'] = mb_convert_case($this->input->post('turma'), MB_CASE_UPPER);
         
-        $this->pais->atualizar($dados);
-        redirect('pais');
+        $this->professor->atualizar($dados);
+        redirect('professor');
     }
 
 }

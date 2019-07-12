@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-3 col-md-3 col-3"></div>
     <div class="col-lg-6 col-md-6 col-6">
-        <h1 class="jumbotron-heading">Cadastro de Aluno</h1><p></p>
+        <h1 class="jumbotron-heading">Editar Aluno</h1><p></p>
         <?php echo form_open('alunos/atualizar'); ?>
         <div class="form-group">
 
@@ -27,14 +27,11 @@
             </div>
             <p></p>
 
-
             <input type="submit" name="acao" value="Salvar" class="btn btn-success"/>
 
             <input type="reset" class="btn btn-danger"/>
 
-
-
-            <a class="btn btn-primary" href="<?php base_url(); ?> home" id="cancelar">Cancelar</a>
+            <a class="btn btn-primary" href="<?php base_url(); ?> ../../alunos" id="cancelar">Cancelar</a>
 
             <p></p>
         </div>
