@@ -13,18 +13,18 @@ class Usuario_model extends CI_Model {
     }
 
     function deletar($id) {
-        $this->db->where('id', $id);
+        $this->db->where('idusuario', $id);
         return $this->db->delete('usuario');
     }
 
     function editar($id) {
-        $this->db->where('id', $id);
+        $this->db->where('idusuario', $id);
         $result = $this->db->get('usuario');
         return $result->result();
     }
 
     function atualizar($data) {
-        $this->db->where('id', $data['id']);
+        $this->db->where('idusuario', $data['idusuario']);
         $this->db->set($data);
         return $this->db->update('usuario');
     }

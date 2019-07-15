@@ -6,18 +6,25 @@
         <form method="post" style="text-align:center" class="form-group">
             <div class="form-group">
                              
-                <input type="text" class="form-control form-control-lg" name="nomeusuario" placeholder="Nomeusuario"/><p></p>
+                <input type="text" class="form-control form-control-lg" name="nomeUsuario" placeholder="Nomeusuario"/><p></p>
 
                 <input type="text" class="form-control form-control-lg" name="user" placeholder="User"/><p></p>
 
-                <input type="text" class="form-control form-control-lg" name="senha" placeholder="Senha"/><p></p>
-
-                <input type="text" class="form-control form-control-lg" name="perfilAcesso" placeholder="PerfilAcesso"/><p></p>
+                <input type="password" class="form-control form-control-lg" name="senha" placeholder="Senha"/><p></p>
+                
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="perfilAcesso" id="inlineRadio1" value="Administrador">
+                    <label class="form-check-label" for="inlineRadio1">Administrador</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="perfilAcesso" id="inlineRadio2" value="Usuario">
+                    <label class="form-check-label" for="inlineRadio2">Usuario</label>
+                </div>
+                <p></p>
                                                          
                 <input type="submit" name="acao" value="Salvar" class="btn btn-success"/>
 
                 <input type="reset" class="btn btn-danger"/>
-
 
 
                 <a class="btn btn-primary" href="<?php base_url(); ?> home" id="cancelar">Cancelar</a>
@@ -49,7 +56,6 @@
                         <tr>
                             <th>Nomeusuario</th>
                             <th>User</th>
-                            <th>Senha</th>
                             <th>perfilAcesso</th>
                             <th>Funções</th>
                             
@@ -62,16 +68,14 @@
                             ?>
                             <tr>
 
-
-                                <td><?php echo $row->nomeusuario; ?></td>
+                                <td><?php echo $row->nomeUsuario; ?></td>
                                 <td><?php echo $row->user; ?></td>
-                                <td><?php echo $row->senha; ?></td> 
                                 <td><?php echo $row->perfilAcesso; ?></td>
                                                              
 
                                <td>
-                                   <a class="glyphicon glyphicon-pencil" href="<?php echo base_url().'usuario/editar/'.$row->id;?>"></a>
-                                   <a class="glyphicon glyphicon-trash " href="<?php echo base_url().'usuario/excluir/'.$row->id;?>"></a>
+                                   <a class="glyphicon glyphicon-pencil" href="<?php echo base_url().'usuario/editar/'.$row->idusuario;?>"></a>
+                                   <a class="glyphicon glyphicon-trash " href="<?php echo base_url().'usuario/excluir/'.$row->idusuario;?>"></a>
                                </td>
                                
 
