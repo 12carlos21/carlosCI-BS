@@ -6,6 +6,9 @@ class Professor extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+        if (!$this->session->userdata('estou_logado')) {
+            redirect('Login');
+        }
         $this->load->model('Professor_model', 'professor'); // 'professor' é um alias para 'Alunos_model'
     }
 
@@ -44,7 +47,7 @@ class Professor extends CI_Controller {
         $dados['rg'] = $this->input->post('rg');
         $dados['endereco'] = mb_convert_case($this->input->post('endereco'), MB_CASE_UPPER);
         $dados['turma'] = mb_convert_case($this->input->post('turma'), MB_CASE_UPPER);
-        
+
         $this->professor->atualizar($dados);
         redirect('professor');
     }

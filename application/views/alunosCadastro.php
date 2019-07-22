@@ -30,6 +30,7 @@
 
             <input type="reset" class="btn btn-danger"/>
 
+            <a class="btn btn-info" id="btn-lista" href="#">Listar</a>
 
 
             <a class="btn btn-primary" href="<?php base_url(); ?> home" id="cancelar">Cancelar</a>
@@ -40,7 +41,7 @@
     </div>
     <div class="col-lg-3 col-md-3 col-3"></div>
 </div>
-<div class="row">
+<div id="div-lista" class="hide row">
     <div class="col-lg-2 col-md-2 col-2"></div>
     <div class="col-lg-7 col-md-7 col-7">
         <table id="table_id" class="table table-striped table-bordered " style="width: 100%">
@@ -56,7 +57,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($alunos as $row):?>           
+                <?php foreach ($alunos as $row): ?>           
                     <tr>
                         <td><?php echo $row->nome; ?></td>
                         <td><?php echo $row->rg; ?></td>
@@ -83,4 +84,8 @@
             }
         });
     });
+    $("#btn-lista").click(function () {
+        $("#div-lista").toggleClass("hide");
+    });
+
 </script>

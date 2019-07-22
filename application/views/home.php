@@ -1,4 +1,2 @@
-<h1 class="jumbotron-heading"> Home </h1>
-<p>Olá mundo!</p>
-<a class="btn btn-primary" href="<?php echo base_url();?>alunos">Alunos</a>
-<a class="btn btn-primary" href="<?php echo base_url();?>professor">Professor</a>
+<div class="col-lg-5 col-md-5 col-5"></div>
+<img src="cs-go.jpg" class="img-fluid" alt="Responsive image" style="width: 90%; padding-top: 50 ">

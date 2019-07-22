@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'aulas',
+	'hostname' => 'mysql942.umbler.com:41890',
+	'username' => 'carlos1',
+	'password' => 'carlosairton',
+	'database' => 'aulas.go',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

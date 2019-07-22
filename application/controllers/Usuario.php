@@ -6,6 +6,11 @@ class Usuario extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+        if (!$this->session->userdata('estou_logado')) {
+            redirect('Login');
+        } elseif ($this->session->userdata("logado")->perfilAcesso != "ADMINISTRADOR") {
+            redirect('Home');
+        }
         $this->load->model('Usuario_model', 'usuario'); // 'usuario' é um alias para 'Usuario_model'
     }
 
@@ -19,31 +24,31 @@ class Usuario extends CI_Controller {
     public function inserir() {
         //nome do campo do vetor deve ser o mesmo campo da tabela no BD
         $dados['nomeUsuario'] = mb_convert_case($this->input->post('nomeUsuario'), MB_CASE_UPPER);
-        $dados['user'] = $this->input->post('user');
-        $dados['senha'] = mb_convert_case($this->input->post('senha'), MB_CASE_UPPER);
+        $dados['user'] = mb_convert_case($this->input->post('user'), MB_CASE_LOWER);
+        $dados['senha'] = md5(mb_convert_case($this->input->post('senha'), MB_CASE_LOWER));
         $dados['perfilAcesso'] = mb_convert_case($this->input->post('perfilAcesso'), MB_CASE_UPPER);
         $result = $this->usuario->inserir($dados);
-        
-     if($result==true){
-        $this->session->set_flashdata('true', 'msg');
-        redirect('usuario');
-        
-     }else {
-        $this->session->set_flashdata('err', 'msg');
-        redirect('usuario');
-    }
+
+        if ($result == true) {
+            $this->session->set_flashdata('true', 'msg');
+            redirect('usuario');
+        } else {
+            $this->session->set_flashdata('err', 'msg');
+            redirect('usuario');
+        }
     }
 
     public function excluir($id) {
-        $result=$this->usuario->deletar($id);
-        if($result==true){
+        $result = $this->usuario->deletar($id);
+        if ($result == true) {
             $this->session->set_flashdata('excluirSucesso', 'msg');
             redirect('usuario');
-        }else {
-        $this->session->set_flashdata('err', 'msg');
-        redirect('usuario');
+        } else {
+            $this->session->set_flashdata('err', 'msg');
+            redirect('usuario');
+        }
     }
-    }
+
     public function editar($id) {
         $data['usuarioEditar'] = $this->usuario->editar($id);
         $this->load->view('template/header');
@@ -53,16 +58,16 @@ class Usuario extends CI_Controller {
 
     public function atualizar() {
         $dados['idusuario'] = $this->input->post('idusuario');
-        $dados['nomeusuario'] = mb_convert_case($this->input->post('nomeusuario'), MB_CASE_UPPER);
-        $dados['user'] = $this->input->post('user');
-        $dados['senha'] = mb_convert_case($this->input->post('senha'), MB_CASE_UPPER);
+        $dados['nomeUsuario'] = mb_convert_case($this->input->post('nomeUsuario'), MB_CASE_UPPER);
+        $dados['user'] = mb_convert_case($this->input->post('user'), MB_CASE_LOWER);
+        $dados['senha'] = md5(mb_convert_case($this->input->post('senha'), MB_CASE_LOWER));
         $dados['perfilAcesso'] = mb_convert_case($this->input->post('perfilAcesso'), MB_CASE_UPPER);
-               
-        $result=$this->usuario->atualizar($dados);
-        if($result==true){
+
+        $result = $this->usuario->atualizar($dados);
+        if ($result == true) {
             $this->session->set_flashdata('trueUpdate', 'msg');
             redirect('usuario');
-        }else {
+        } else {
             $this->session->set_flashdata('err', 'msg');
             redirect('usuario');
         }

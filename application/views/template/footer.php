@@ -1,6 +1,6 @@
-        </div>
-        <script type="text/javascript" src="<?php echo base_url('DataTables/datatables.min.js')?>"></script>
-        <dialog id="sucesso" class="">
+</div>
+<script type="text/javascript" src="<?php echo base_url('DataTables/datatables.min.js') ?>"></script>
+<dialog id="sucesso" class="">
     <h3 class="modal-title">Sucesso</h3>
     <div class="modal-body">
         <p>
@@ -111,5 +111,5 @@ if ($this->session->flashdata('true')) {
         }());
     </script>
 <?php } ?>
-    </body>
+</body>
 </html>

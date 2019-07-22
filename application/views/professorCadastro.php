@@ -19,7 +19,7 @@
 
             <input type="reset" class="btn btn-danger"/>
 
-
+            <a class="btn btn-info" id="btn-lista" href="#">Listar</a>
 
             <a class="btn btn-primary" href="<?php base_url(); ?> home" id="cancelar">Cancelar</a>
 
@@ -29,7 +29,7 @@
     </div>
     <div class="col-lg-3 col-md-3 col-3"></div>
 </div>
-<div class="row">
+<div id="div-lista" class="hide row">
     <div class="col-lg-3 col-md-3 col-3"></div>
     <div class="col-lg-6 col-md-6 col-6">
         <table id="table_id" class="table table-striped table-bordered " style="width: 100%">
@@ -43,7 +43,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($professor as $row):?>           
+                <?php foreach ($professor as $row): ?>           
                     <tr>
                         <td><?php echo $row->nome; ?></td>
                         <td><?php echo $row->rg; ?></td>
@@ -67,5 +67,8 @@
                 "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
             }
         });
+    });
+    $("#btn-lista").click(function () {
+        $("#div-lista").toggleClass("hide");
     });
 </script>

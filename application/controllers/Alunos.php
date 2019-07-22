@@ -6,6 +6,9 @@ class Alunos extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+        if (!$this->session->userdata('estou_logado')) {
+            redirect('Login');
+        }
         $this->load->model('Alunos_model', 'alunos'); // 'alunos' é um alias para 'Alunos_model'
     }
 
@@ -24,24 +27,24 @@ class Alunos extends CI_Controller {
         $dados['turma'] = mb_convert_case($this->input->post('turma'), MB_CASE_UPPER);
         $dados['idade'] = $this->input->post('idade');
         $dados['sexo'] = mb_convert_case($this->input->post('sexo'), MB_CASE_UPPER);
-        
-        $result=$this->alunos->inserir($dados);
-        
-        if($result==true){
+
+        $result = $this->alunos->inserir($dados);
+
+        if ($result == true) {
             $this->session->set_flashdata('true', 'msg');
             redirect('alunos');
-        }else {
+        } else {
             $this->session->set_flashdata('err', 'msg');
             redirect('alunos');
         }
     }
 
     public function excluir($id) {
-       $result=$this->alunos->deletar($dados);      
-        if($result==true){
+        $result = $this->alunos->deletar($dados);
+        if ($result == true) {
             $this->session->set_flashdata('excluirSucesso', 'msg');
             redirect('alunos');
-        }else {
+        } else {
             $this->session->set_flashdata('err', 'msg');
             redirect('alunos');
         }
@@ -62,12 +65,12 @@ class Alunos extends CI_Controller {
         $dados['turma'] = mb_convert_case($this->input->post('turma'), MB_CASE_UPPER);
         $dados['idade'] = $this->input->post('idade');
         $dados['sexo'] = mb_convert_case($this->input->post('sexo'), MB_CASE_UPPER);
-        
-        $result=$this->alunos->atualizar($dados);      
-        if($result==true){
+
+        $result = $this->alunos->atualizar($dados);
+        if ($result == true) {
             $this->session->set_flashdata('trueUpdate', 'msg');
             redirect('alunos');
-        }else {
+        } else {
             $this->session->set_flashdata('err', 'msg');
             redirect('alunos');
         }
