@@ -40,7 +40,7 @@ class Alunos extends CI_Controller {
     }
 
     public function excluir($id) {
-        $result = $this->alunos->deletar($dados);
+        $result = $this->alunos->deletar($id);
         if ($result == true) {
             $this->session->set_flashdata('excluirSucesso', 'msg');
             redirect('alunos');
