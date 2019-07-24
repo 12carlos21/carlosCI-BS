@@ -22,7 +22,7 @@
             ?>        
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="col-lg-2 col-md-2 col-2"></div>
-                <img src="icone.PNG" class="img-fluid" alt="Responsive image" style="width: 5%">
+                <img src="<?php base_url();?>icone.PNG" class="img-fluid" alt="Responsive image" style="width: 5%">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
